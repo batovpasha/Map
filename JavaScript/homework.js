@@ -46,6 +46,10 @@ const MapByArrays = class {
   }
 };
 
+MapByArrays.prototype[Symbol.iterator] = function* () {  // iterable function
+  yield* this.values;
+};
+
 const cityPopulation = new MapByArrays();
 
 cityPopulation.set('Shanghai', 24256800);
@@ -65,3 +69,5 @@ if (!cityPopulation.has('Shanghai')) {
 
 console.log('size:', cityPopulation.size);
 console.log('keys:', cityPopulation.keys);
+
+console.log([...cityPopulation]);
